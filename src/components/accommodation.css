@@ -1,0 +1,19 @@
+.accommodation-image{
+    border-radius: 50%;
+    width: 40%;
+    margin-top: 100px;
+    margin-bottom: 75px;
+}
+
+.accommodation-container{
+    background-color: #51918b;
+    padding: 100px;
+}
+
+#ceremony {
+    margin-bottom: 50px;
+}
+
+.address {
+    margin: 0px;
+}
