@@ -1,0 +1,121 @@
+#walkingDog{
+    background-image: url('../../images//engagement_photos//walkingDog.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+}
+
+.container-fluid {
+    padding-left: unset;
+    padding-right: unset;
+}
+.overlay-top {
+    position: absolute;
+    text-align: center;
+    left: 0px;
+    right: 0px;
+    top: 15%;
+    color: #FEE9C9;
+    background-color: #393F2D;
+    opacity: 75%;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.overlay-top .engaged{
+    font-size: 50px;
+    font-family: 'Poiret One', cursive;
+}
+.overlay-top .date{
+    font-size: 20px;
+    font-family: 'Poiret One', cursive;
+}
+
+.rsvp-button-container {
+    position: absolute;
+    left: 10%;
+    right: 0px;
+    bottom: 5%;
+    width: fit-content;
+    border-radius: 0px;
+    color: #FEE9C9;
+}
+
+.rsvp-button-container #rsvp-button{
+    width: 20vw;
+    min-width:150px;
+    height: 10vh;
+    background-color: #ab9b22;
+    border-color: #ab9b22;
+    font-family: 'Poiret One', cursive;
+    font-size: 30px;
+}
+
+
+.overlay-middle {
+    position: absolute;
+    text-align: center;
+    left: 0px;
+    right: 0px;
+    bottom: 10%;
+    color: white;
+    z-index: 1;
+}
+.carousel-inner {
+    position: relative;
+}
+
+.layer {
+    background-color: var(--grey);
+    filter: opacity(50%) contrast(20%);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel {
+    width: 100%;
+}
+
+.ourNames {
+    display: inline;
+}
+
+.navbar {
+    z-index: 3;
+    position: fixed;
+    top: 5px;
+    width: 100%;
+}
+
+.navbar-toggler {
+    z-index: 3;
+}
+
+.navbar-dark .navbar-toggler {
+    border: none;
+    /* color: white !important; */
+}
+
+.navbar-collapse {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 50px;
+}
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-link {
+    color: white !important;
+}

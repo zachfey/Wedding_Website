@@ -1,0 +1,33 @@
+.form-group {
+    text-align: left;
+}
+
+.modal-content {
+    background-color: #FEE9C9;
+}
+
+.modal-title, .modal-content label,.modal-content p,.modal-content h1,.modal-content h2,.modal-content h3,.modal-content h4,.modal-content h5, td, th {
+    color: #393F2D;
+    font-family: 'Poiret One', cursive;
+}
+
+.modal-header {
+border-bottom: 1px solid #393F2D
+}
+.modal-footer {
+    border-top:1px solid #393F2D
+}
+
+button.rsvp-lookup {
+    background-color: #ab9b22;
+    border-color: #ab9b22;
+    font-family: 'Poiret One', cursive;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+td .form-group {
+    margin-bottom: unset;
+}

@@ -6,6 +6,32 @@
   text-align: center;
 }
 
+.navbar-collapse.collapse {
+  padding-top: unset;
+  padding-left: unset;
+  padding-right: unset;
+}
+
+.navbar#app-navbar {
+  top: 0px;
+  background-color: #ACA46B;
+}
+
+.navbar .wedding-nav {
+  font-family: 'Poiret One', cursive;
+}
+
+.navbar .wedding-nav.names {
+  font-size: 30px;
+  font-weight: bold;
+  color: #393F2D;
+}
+
+.navbar .wedding-nav.link{
+  font-size: 20px;
+  color: #FEE9C9;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -47,4 +73,8 @@
   --cream: #eee5cf;
   --black: #3e3e3e;
   --green: #65765e;
+}
+
+.page {
+  height: 100vh;
 }
