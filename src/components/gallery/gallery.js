@@ -1,31 +1,27 @@
 import React from 'react';
-import { Container, Image, Button, Card } from 'react-bootstrap';
-require('./location.css')
+import { Container, Carousel } from 'react-bootstrap';
+import image1 from '../../images/gallery/EngagementPhotos-10.jpg';
+import image2 from '../../images/gallery/EngagementPhotos-73.jpg';
+import image3 from '../../images/gallery/EngagementPhotos-128.jpg';
+import image4 from '../../images/gallery/EngagementPhotos-163.jpg';
+import image5 from '../../images/gallery/EngagementPhotos-165.jpg';
+require('./gallery.css');
 export default function Location() {
+    const carouselImages = [image1, image2, image3, image4, image5];
     return (
         <Container fluid className="location-container">
             <Carousel>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="holder.js/800x400?text=First slide&bg=373940"
-                        alt="First slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="holder.js/800x400?text=Second slide&bg=282c34"
-                        alt="Third slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="holder.js/800x400?text=Third slide&bg=20232a"
-                        alt="Third slide"
-                    />
-                </Carousel.Item>
+                {carouselImages.map((image, index) => {
+                    return (
+                        <Carousel.Item className='gallery-photo' key={index}>
+                            <img
+                                src={image}
+                                className="contain"
+                            />
+                        </Carousel.Item>
+                    )
+                })}
+
             </Carousel>
         </Container>
     )

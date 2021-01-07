@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav'
 import MainPage from './components/mainPage/mainPage'
 import Location from './components/location/location'
 import RSVP from './components/rsvp/rsvp'
+import Gallery from './components/gallery/gallery'
 
 function App() {
   const [showRSVPModal, setShow] = useState(false);
@@ -38,7 +39,7 @@ function App() {
               <Nav.Link className="wedding-nav link" href="/story">Our Story</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link className="wedding-nav link" href="/rsvp">Gallery</Nav.Link>
+              <Nav.Link className="wedding-nav link" href="/gallery">Gallery</Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
@@ -50,6 +51,7 @@ function App() {
             <MainPage showRSVPLookupModal={setShowRSVPModal} />
           )} />
           <Route path="/location" component={Location} />
+          <Route path="/gallery" component={Gallery} />
         </div>
       </Router>
     </div>
