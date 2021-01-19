@@ -1,0 +1,52 @@
+version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@0.1.18
+jobs:
+  build_project:
+    working_directory: ~/circle-ci-s3-deploy
+    docker:
+      - image: node:10.15.3
+    steps:
+      - checkout
+      - run: 
+          name: Installing dependencies
+          command: npm install
+      - run: 
+          name: Building project
+          command: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  deploy_project:
+    executor: aws-cli/default
+    steps:
+      - attach_workspace:
+          at: .
+      - aws-cli/setup:
+          profile-name: default
+      - run:
+          name: Upload file to S3
+          command: aws s3 sync ./build/ s3://katieandzach.wedding/ --delete
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build_project:
+          filters:
+              branches:
+                ignore: /.*/
+              tags:
+                only: /.*/
+
+      - deploy_project:
+          requires:
+            - build_project
+          context: aws-context
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
