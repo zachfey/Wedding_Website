@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Image, Button, Card } from 'react-bootstrap';
-require('./location.css')
+import { Container, Button, Card } from 'react-bootstrap';
+require('./location.scss')
 export default function Location() {
     return (
         <Container fluid className="location-container">

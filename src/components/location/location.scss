@@ -1,0 +1,27 @@
+@import '../../custom.scss';
+
+$locationCardHeight: 340px;
+$locationCardMargin: 10px;
+
+#location{
+    background-image: url('../../images/engagement_photos/location2.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: calc(100vh - #{$locationCardHeight} - #{$navbarHeight} - 2 * #{$locationCardMargin});
+}
+
+.location-container {
+    height: calc(100vh - #{$navbarHeight});
+    background-color: $secondary;
+}
+
+.location-card {
+    height: $locationCardHeight;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: $locationCardMargin;
+    margin-bottom: $locationCardMargin; 
+}

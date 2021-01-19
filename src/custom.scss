@@ -1,0 +1,26 @@
+$primary: #d9c4b8;
+$secondary: #f2cea2;
+$dark: #0C0826;
+$light: #f2f2f2;
+$navbarHeight: 70px;
+$error: #D9442E;
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Poiret One", cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+  height: calc(100vh - 70px);
+}

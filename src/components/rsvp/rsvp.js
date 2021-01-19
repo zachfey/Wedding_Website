@@ -1,11 +1,8 @@
 import React from "react";
 import RSVPLookupModal from './rsvpLookupModal/rsvpLookupModal';
 import RSVPUpdateModal from './rsvpUpdateModal/rsvpUpdateModal';
-const axios = require("axios").default;
-require('./rsvp.css')
+require('./rsvp.scss')
 
-
-const REACT_APP_RSVP_URL_DEV="https://0mggls4coa.execute-api.us-east-1.amazonaws.com/dev/rsvp"
 class RSVP extends React.Component {
     constructor(props) {
         super()

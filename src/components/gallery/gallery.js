@@ -5,7 +5,7 @@ import image2 from '../../images/gallery/EngagementPhotos-73.jpg';
 import image3 from '../../images/gallery/EngagementPhotos-128.jpg';
 import image4 from '../../images/gallery/EngagementPhotos-163.jpg';
 import image5 from '../../images/gallery/EngagementPhotos-165.jpg';
-require('./gallery.css');
+require('./gallery.scss');
 export default function Location() {
     const carouselImages = [image1, image2, image3, image4, image5];
     return (
@@ -17,6 +17,7 @@ export default function Location() {
                             <img
                                 src={image}
                                 className="contain"
+                                alt={'gallery-photo-' + index}
                             />
                         </Carousel.Item>
                     )

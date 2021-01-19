@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './App.css';
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import './App.scss';
+import { Route, BrowserRouter as Router, Redirect } from 'react-router-dom'
 import { Navbar } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav'
 import MainPage from './components/mainPage/mainPage'
@@ -18,7 +18,7 @@ function App() {
   }
   return (
     <div className="App">
-      <Navbar id="app-navbar" expand="md">
+      <Navbar id="app-navbar" expand="md" bg="light">
         <Navbar.Brand className="wedding-nav names" href="/home">Zach & Katie</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -47,6 +47,11 @@ function App() {
       <RSVP showRSVPLookupModal={showRSVPModal} resetShowRSVPModal={resetShowRSVPModal} />
       <Router>
         <div>
+        <Route
+                exact
+                path="/"
+                render={() => <Redirect to="/home" />}
+              />
           <Route path="/home" render={() => (
             <MainPage showRSVPLookupModal={setShowRSVPModal} />
           )} />

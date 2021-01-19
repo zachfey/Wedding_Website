@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, ProgressBar } from 'react-bootstrap'
 const axios = require("axios").default;
 
 
@@ -8,7 +8,6 @@ const REACT_APP_RSVP_URL_DEV = "https://0mggls4coa.execute-api.us-east-1.amazona
 class RSVPLookupModal extends React.Component {
     constructor(props) {
         super()
-        //TODO update to be a class variable?
         this.state = {
             formFirstName: '',
             formLastName: '',
@@ -17,7 +16,9 @@ class RSVPLookupModal extends React.Component {
             returnedLastName: '',
             returnedAllowedPlusOnes: 0,
             show: props.openModal,
-            valid: false
+            valid: false,
+            showCodeError: false,
+            showNameError: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -29,7 +30,7 @@ class RSVPLookupModal extends React.Component {
 
     componentWillReceiveProps(props) {
         if (props.closeModal) this.handleClose();
-        if (props.openModal){
+        if (props.openModal) {
             this.handleShow()
         } else {
             this.handleClose();
@@ -49,6 +50,7 @@ class RSVPLookupModal extends React.Component {
 
     getReservationInfo(event) {
         event.preventDefault();
+        this.setState({ showCodeError: false, showNameError: false, showProgress: true });
         const firstName = this.state.formFirstName;
         const lastName = this.state.formLastName;
         const reservationCode = this.state.formReservationCode;
@@ -56,10 +58,21 @@ class RSVPLookupModal extends React.Component {
         const getURL = reservationCode ? `/${reservationCode}` : `/${firstName}+${lastName}`;
         axios.get(REACT_APP_RSVP_URL_DEV + getURL).then(
             res => {
-                this.props.handleReturnedReservation(res.data.body.Items);
+                this.setState({showProgress: false})
+                if (res.data.statusCode === 200) {
+                    this.props.handleReturnedReservation(res.data.body.Items);
+                } else {
+                    console.log('person not found');
+                    if (reservationCode) {
+                        this.setState({ showCodeError: true });
+                    } else {
+                        this.setState({ showNameError: true });
+                    }
+                }
             },
             err => {
-                console.log('error', err)
+                this.setState({showProgress: false})
+                console.log('error', err);
             })
     }
 
@@ -100,10 +113,13 @@ class RSVPLookupModal extends React.Component {
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="primary" className="rsvp-lookup" disabled={!this.state.valid} onClick={this.getReservationInfo}>
-                            Find Reservation
-                </Button>
+                        <p className="error" hidden={!this.state.showCodeError}>Reservation not found. Try re-entering the reservation code or looking up by name. If searching by name, ensure the "Reservation Code" field is empty.</p>
+                        <p className="error" hidden={!this.state.showNameError}>Reservation not found. Try searching by nickname/full name, or looking up by code.</p>
+                            <Button variant="primary" className="rsvp-lookup" disabled={!this.state.valid} onClick={this.getReservationInfo}>
+                                Find Reservation
+                            </Button>
                     </Modal.Footer>
+                            <ProgressBar hidden={!this.state.showProgress} animated now={100} />
                 </Modal>
             </>
 

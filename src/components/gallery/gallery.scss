@@ -1,0 +1,7 @@
+@import '../../custom.scss';
+
+.contain{
+    object-fit: contain;
+    height: calc(100vh - #{$navbarHeight});
+    width:100vw;
+}
