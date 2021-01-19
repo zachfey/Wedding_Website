@@ -47,11 +47,12 @@ function App() {
       <RSVP showRSVPLookupModal={showRSVPModal} resetShowRSVPModal={resetShowRSVPModal} />
       <Router>
         <div>
-        <Route
-                exact
-                path=""
-                render={() => <Redirect to="/home" />}
-              />
+          <Route
+                  exact
+                  strict
+                  path="/"
+                  render={() => <Redirect to="/home" />}
+                />
           <Route path="/home" render={() => (
             <MainPage showRSVPLookupModal={setShowRSVPModal} />
           )} />
