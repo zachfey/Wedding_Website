@@ -27,8 +27,11 @@ jobs:
       - aws-cli/setup:
           profile-name: default
       - run:
-          name: Upload file to S3
+          name: Upload file to S3 without prefix
           command: aws s3 sync ./build/ s3://katieandzach.wedding/ --delete
+      - run:
+          name: Upload file to S3 with prefix
+          command: aws s3 sync ./build/ s3://www.katieandzach.wedding/ --delete
 
 workflows:
   version: 2
