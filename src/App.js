@@ -49,7 +49,7 @@ function App() {
         <div>
         <Route
                 exact
-                path="/"
+                path=""
                 render={() => <Redirect to="/home" />}
               />
           <Route path="/home" render={() => (
