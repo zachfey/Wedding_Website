@@ -1,26 +1,15 @@
 @import '../../custom.scss';
 
-#walkingDog{
-    background-image: url('../../images//engagement_photos//walkingDog.jpg');
+#mainPage-image{
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: 100%;
-}
-.overlay-top {
-    position: absolute;
-    text-align: center;
-    left: 0px;
-    right: 0px;
-    top: 5%;
-    color: $light;
-    background-color: $dark;
-    opacity: 0.75;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border: solid 8px #fff;
 }
 
 .overlay-top .engaged{
@@ -31,21 +20,4 @@
 .overlay-top .date{
     font-size: 20px;
     font-weight: bolder;
-}
-
-.rsvp-button-container {
-    position: absolute;
-    left: 10%;
-    right: 0px;
-    bottom: 5%;
-    width: fit-content;
-    border-radius: 0px;
-}
-
-.rsvp-button-container #rsvp-button{
-    width: 20vw;
-    min-width:150px;
-    height: 10vh;
-    font-family: 'Poiret One', cursive;
-    font-size: 30px;
 }

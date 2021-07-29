@@ -1,17 +1,21 @@
 @import '../../custom.scss';
 
-$locationCardHeight: 340px;
+$locationCardHeight: 30vh;
 $locationCardMargin: 10px;
 
 #location{
-    background-image: url('../../images/engagement_photos/location2.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    height: calc(100vh - #{$locationCardHeight} - #{$navbarHeight} - 2 * #{$locationCardMargin});
+    // background-image: url('../../images/engagement_photos/location2.jpg');
+    // background-position: center center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // position: relative;
+    // height: calc(100vh - #{$locationCardHeight} - #{$navbarHeight} - 2 * #{$locationCardMargin});
 }
 
+#location-image {
+    max-height: calc(100vh - #{$locationCardHeight} - #{$navbarHeight} - 4 * #{$locationCardMargin});
+    margin-top: 10px;
+}
 .location-container {
     height: calc(100vh - #{$navbarHeight});
     background-color: $secondary;

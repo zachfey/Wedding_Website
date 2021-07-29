@@ -1,7 +1,7 @@
 $primary: #d9c4b8;
 $secondary: #f2cea2;
 $dark: #0C0826;
-$light: #f2f2f2;
+$light: #f2efe3;
 $navbarHeight: 70px;
 $error: #D9442E;
 
@@ -9,7 +9,8 @@ $error: #D9442E;
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Poiret One", cursive;
+  font-family: 'Antic Slab', serif;
+  // font-family: -apple-system, BlinkMacSystemFont, "Poiret One", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,5 +23,4 @@ code {
 .container-fluid {
   padding-left: 0px;
   padding-right: 0px;
-  height: calc(100vh - 70px);
 }

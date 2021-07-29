@@ -6,6 +6,14 @@
 
 .App {
   text-align: center;
+  background-color: $light;
+  padding-bottom: 75px;
+}
+
+.content {
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .navbar#app-navbar {
@@ -38,4 +46,37 @@
 
 .page {
   height: 100vh;
+}
+
+/* Container holding the image and the text */
+#image-container {
+  position: relative;
+  text-align: center;
+}
+
+/* Centered text */
+#names {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 7vw;
+  color: #482614;
+}
+
+.rsvp-button-container {
+    position: fixed;
+    left: 10%;
+    right: 0px;
+    bottom: 5%;
+    width: fit-content;
+    border-radius: 0px;
+}
+
+.rsvp-button-container #rsvp-button{
+    width: 20vw;
+    min-width:150px;
+    height: 10vh;
+    font-family: 'Poiret One', cursive;
+    font-size: 30px;
 }

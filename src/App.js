@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import './App.scss';
 import { Route, BrowserRouter as Router, Redirect } from 'react-router-dom'
-import { Navbar } from 'react-bootstrap';
+import { Button, Image, Navbar } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav'
 import MainPage from './components/mainPage/mainPage'
 import Location from './components/location/location'
+import Accommodations from './components/accommodations/accommodations'
+import Story from './components/story/story'
 import RSVP from './components/rsvp/rsvp'
 import Gallery from './components/gallery/gallery'
+import banner from "./images/Banner_Photos/invitationDesign.png"
 
 function App() {
   const [showRSVPModal, setShow] = useState(false);
@@ -18,51 +21,65 @@ function App() {
   }
   return (
     <div className="App">
-      <Navbar id="app-navbar" expand="md" bg="light">
-        <Navbar.Brand className="wedding-nav names" href="/home">Zach & Katie</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="justify-content-center" justify activeKey="/home">
-            <Nav.Item>
-              <Nav.Link className="wedding-nav link" onClick={setShowRSVPModal}>RSVP</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className="wedding-nav link" href="/location">Location</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className="wedding-nav link" href="/registry">Registry</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className="wedding-nav link" href="/accomodation">Accomodations</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className="wedding-nav link" href="/story">Our Story</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className="wedding-nav link" href="/gallery">Gallery</Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-      <RSVP showRSVPLookupModal={showRSVPModal} resetShowRSVPModal={resetShowRSVPModal} />
-      <Router>
-        <div>
-          <Route
-                  exact
-                  strict
-                  path="/"
-                  render={() => <Redirect to="/home" />}
-                />
-          <Route path="/home" render={() => (
-            <MainPage showRSVPLookupModal={setShowRSVPModal} />
-          )} />
-          <Route path="/location" component={Location} />
-          <Route path="/gallery" component={Gallery} />
+      <div className="content">
+        <div id='image-container'>
+          <Image src={banner} fluid id="banner-image"/>
+          <div id='names'>Katie & Zach</div>
         </div>
-      </Router>
+        <Navbar id="app-navbar" expand="md" bg="light">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="justify-content-center" justify activeKey="/home">
+              <Nav.Item>
+                <Nav.Link className="wedding-nav link" onClick={setShowRSVPModal}>RSVP</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link className="wedding-nav link" href="/home">Home</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link className="wedding-nav link" href="/location">Location</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link className="wedding-nav link" href="/registry">Registry</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link className="wedding-nav link" href="/accommodations">Accommodations</Nav.Link>
+              </Nav.Item>
+              {/* <Nav.Item>
+                <Nav.Link className="wedding-nav link" href="/story">Our Story</Nav.Link>
+              </Nav.Item> */}
+              <Nav.Item>
+                <Nav.Link className="wedding-nav link" href="/gallery">Gallery</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        <RSVP showRSVPLookupModal={showRSVPModal} resetShowRSVPModal={resetShowRSVPModal} />
+        <Router>
+          <div>
+            <Route
+                    exact
+                    strict
+                    path="/"
+                    render={() => <Redirect to="/home" />}
+                  />
+            <Route path="/home" render={() => (
+              <MainPage/>
+            )} />
+            <Route path="/location" component={Location} />
+            <Route path="/accommodations" component={Accommodations} />
+            <Route path="/story" component={Story} />
+            <Route path="/gallery" component={Gallery} />
+          </div>
+        </Router>
+      </div>
+      <div className="rsvp-button-container">
+          <Button id="rsvp-button" variant="primary" size="lg" onClick={setShowRSVPModal}>RSVP</Button>
+      </div>
     </div>
 
   );
 }
-
+//TODO Trim whitespace from rsvps names
+//TODO Not display text when nobody is invited to rehearsal dinner
 export default App;

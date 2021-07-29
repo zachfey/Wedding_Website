@@ -1,18 +1,22 @@
 import React from 'react';
-import { Container, Jumbotron, Image } from 'react-bootstrap';
-import pageImage from "../../images/engagement_photos/walkingDog.jpg";
-require('./mainPage.scss')
-
-export default function MainPage(props) {
+import { Image, Container, Button, Jumbotron } from 'react-bootstrap';
+import pageImage from "../../images/engagement_photos/EngagementPhotos-73.jpg"
+require('./story.scss')
+export default function Location() {
     return (
-        <Container fluid>
-        <Image src={pageImage} rounded fluid id="mainPage-image"/>
+        <Container fluid className="story-container">
+            <div id="story">
+            <Image src={pageImage} rounded fluid id="story-image"/>
+                {/* <div className="overlay-top">
+                    <h1 className="text-center engaged">LOCATION</h1>
+                </div> */}
+            </div>
             <Jumbotron class="story-jumbotron">
                 <p>
                     Katie and Zach met in January, 2014 while they were both in college. Katie was finishing up her last semester of her Bachelor of Science in 
                     Respiratory Therapy and Zach had another year left in his Bachelor of Science in Chemical Engineering. Zach saw something he liked in the bar 
                     so he went and got it. 
-                </p>
+                 </p>
                 <p>
                     When Zach moved to Lousiana to start his career, they continued dating in a long-distance relationship. Although they didn't see each other all the 
                     time, they always had a great time together when they did. During this time, they made their first (of several) cross-country road trips out to San Francisco
@@ -25,6 +29,5 @@ export default function MainPage(props) {
                 </p>
             </Jumbotron>
         </Container>
-        
     )
 }

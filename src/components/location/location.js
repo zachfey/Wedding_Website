@@ -1,16 +1,18 @@
 import React from 'react';
-import { Container, Button, Card } from 'react-bootstrap';
+import { Image, Container, Button, Card } from 'react-bootstrap';
+import pageImage from "../../images/engagement_photos/location2.jpg"
 require('./location.scss')
 export default function Location() {
     return (
         <Container fluid className="location-container">
             <div id="location">
-                <div className="overlay-top">
+            <Image src={pageImage} rounded fluid id="location-image"/>
+                {/* <div className="overlay-top">
                     <h1 className="text-center engaged">LOCATION</h1>
-                </div>
+                </div> */}
             </div>
             <Card className="location-card" style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://oakleafcottage.com/storage/app/media/assets/Oakleaf-Cottage-Chattanooga.png" style={{ 'background-color': '#393F2D', 'padding': '10px' }} />
+                {/* <Card.Img variant="top" src="https://oakleafcottage.com/storage/app/media/assets/Oakleaf-Cottage-Chattanooga.png" style={{ 'background-color': '#393F2D', 'padding': '10px' }} /> */}
                 <Card.Body>
                     <Card.Title>Oakleaf Cottage</Card.Title>
                     <Card.Text>

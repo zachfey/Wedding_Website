@@ -1,0 +1,31 @@
+@import '../../custom.scss';
+
+$accommodationsCardHeight: 30vh;
+$accommodationsCardMargin: 10px;
+
+#accommodations{
+    // background-image: url('../../images/engagement_photos/accommodations2.jpg');
+    // background-position: center center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // position: relative;
+    // height: calc(100vh - #{$accommodationsCardHeight} - #{$navbarHeight} - 2 * #{$accommodationsCardMargin});
+}
+
+#accommodations-image {
+    max-height: calc(100vh - #{$accommodationsCardHeight} - #{$navbarHeight} - 4 * #{$accommodationsCardMargin});
+    margin-top: 10px;
+}
+.accommodations-container {
+    height: calc(100vh - #{$navbarHeight});
+    background-color: $secondary;
+}
+
+.accommodations-card {
+    height: $accommodationsCardHeight;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: $accommodationsCardMargin;
+    margin-bottom: $accommodationsCardMargin; 
+}
