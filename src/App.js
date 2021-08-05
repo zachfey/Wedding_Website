@@ -6,7 +6,6 @@ import Nav from 'react-bootstrap/Nav'
 import MainPage from './components/mainPage/mainPage'
 import Location from './components/location/location'
 import Accommodations from './components/accommodations/accommodations'
-import Story from './components/story/story'
 import RSVP from './components/rsvp/rsvp'
 import Gallery from './components/gallery/gallery'
 import banner from "./images/Banner_Photos/invitationDesign.png"
@@ -29,7 +28,7 @@ function App() {
         <Navbar id="app-navbar" expand="md" bg="light">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="justify-content-center" justify activeKey="/home">
+            <Nav className="justify-content-center" justify>
               <Nav.Item>
                 <Nav.Link className="wedding-nav link" onClick={setShowRSVPModal}>RSVP</Nav.Link>
               </Nav.Item>
@@ -45,9 +44,6 @@ function App() {
               <Nav.Item>
                 <Nav.Link className="wedding-nav link" href="/accommodations">Accommodations</Nav.Link>
               </Nav.Item>
-              {/* <Nav.Item>
-                <Nav.Link className="wedding-nav link" href="/story">Our Story</Nav.Link>
-              </Nav.Item> */}
               <Nav.Item>
                 <Nav.Link className="wedding-nav link" href="/gallery">Gallery</Nav.Link>
               </Nav.Item>
@@ -63,12 +59,10 @@ function App() {
                     path="/"
                     render={() => <Redirect to="/home" />}
                   />
-            <Route path="/home" render={() => (
-              <MainPage/>
-            )} />
+            
+            <Route path="/home" component={MainPage} />
             <Route path="/location" component={Location} />
             <Route path="/accommodations" component={Accommodations} />
-            <Route path="/story" component={Story} />
             <Route path="/gallery" component={Gallery} />
           </div>
         </Router>
