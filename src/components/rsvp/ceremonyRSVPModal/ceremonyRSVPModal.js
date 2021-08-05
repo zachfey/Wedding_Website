@@ -5,7 +5,7 @@ const axios = require("axios").default;
 
 
 const REACT_APP_RSVP_URL_DEV = "https://0mggls4coa.execute-api.us-east-1.amazonaws.com/dev/rsvp"
-class RSVPUpdateModal extends React.Component {
+class CeremonyRSVPModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -39,78 +39,18 @@ class RSVPUpdateModal extends React.Component {
         })
     }
 
-    handleRSVPChange(index, rehearsalRSVP, event) {
+    handleRSVPChange(index, event) {
         const target = event.target;
-        let value = target.checked;
+        let attending = false;
+        if (target.name == 'vaccinated-attending' + index) {
+            attending = true;
+        }
         this.setState(prevState => {
             let reservation = prevState.reservation;
             reservation[index] = Object.assign({}, prevState.reservation[index]);
-            if (rehearsalRSVP) {
-                reservation[index].RehearsalRSVP.BOOL = value;
-            } else {
-                reservation[index].RSVPd.BOOL = value;
-            }
+            reservation[index].RSVPd.BOOL = attending;
             return { reservation: reservation };
         })
-    }
-
-    displayReservation() {
-        let returnArray = []
-        this.state.reservation.forEach((person, index) => {
-            returnArray.push(this.personDetails(person, index, false))
-        })
-        return returnArray;
-    }
-
-    displayRehearsalReservation() {
-        let returnArray = []
-        this.state.reservation.forEach((person, index) => {
-            if (person.RehearsalInvite.BOOL) {
-                returnArray.push(this.personDetails(person, index, true))
-            }
-        })
-        return returnArray;
-    }
-
-    personDetails(person, index, rehearsalRSVP) {
-        const firstName = person.FirstName.S;
-        const lastName = person.LastName.S;
-        const tag = rehearsalRSVP ? 'reh' : 'cer'
-        return (
-            <tr>
-                <td>
-                    {`${firstName} ${lastName}`}
-                </td>
-                <td>
-                    <FormCheck
-                    type="radio"
-                    key={'updateRSVPFormCheck' + tag + index}
-                    name={index}
-                    onChange={this.handleRSVPChange.bind(this, index, rehearsalRSVP)}
-                    checked={rehearsalRSVP ? this.state.reservation[index].RehearsalRSVP.BOOL : this.state.reservation[index].RSVPd.BOOL} />
-                </td>
-                <td>
-                    <FormCheck
-                    type="radio"
-                    key={'updateRSVPFormCheck' + tag + index}
-                    name={index}
-                    onChange={this.handleRSVPChange.bind(this, index, rehearsalRSVP)}
-                    checked={rehearsalRSVP ? this.state.reservation[index].RehearsalRSVP.BOOL : this.state.reservation[index].RSVPd.BOOL} />
-                </td>
-                {person.AllowedPlusOne.BOOL ?
-                    <td>
-                        <Form.Group key={'updateRSVPFormGroup' + tag + index} controlId={'plusOne' + index}>
-                            <Form.Control
-                                key={'updateRSVPPlusOne' + tag + index}
-                                type="text"
-                                placeholder="Plus One's Name"
-                                onChange={this.handlePlusOneChange.bind(this, index)}
-                                value={this.state.reservation[index].PlusOne.S} />
-                        </Form.Group>
-                    </td>
-                    : <td />}
-            </tr>
-        )
     }
 
     renderHeaders() {
@@ -122,6 +62,55 @@ class RSVPUpdateModal extends React.Component {
         return tableHeaders;
     }
 
+    displayReservation() {
+        let returnArray = []
+        this.state.reservation.forEach((person, index) => {
+            returnArray.push(this.personDetails(person, index, false))
+        })
+        return returnArray;
+    }
+
+    personDetails(person, index) {
+        const firstName = person.FirstName.S;
+        const lastName = person.LastName.S;
+        return (
+            <tr>
+                <td>
+                    {`${firstName} ${lastName}`}
+                </td>
+                <td>
+                    <FormCheck
+                    className="text-center"
+                    type="radio"
+                    key={'updateRSVPFormCheck' +  index}
+                    name={'vaccinated-attending' + index}
+                    onClick={this.handleRSVPChange.bind(this, index)}
+                    checked={this.state.reservation[index].RSVPd.BOOL} />
+                </td>
+                <td>
+                    <FormCheck
+                    className="text-center"
+                    type="radio"
+                    key={'updateRSVPFormCheck' +  index}
+                    name={'not-attending' + index}
+                    onClick={this.handleRSVPChange.bind(this, index)}
+                    checked={!this.state.reservation[index].RSVPd.BOOL} />
+                </td>
+                {person.AllowedPlusOne.BOOL ?
+                    <td class="plus-one-name">
+                        <Form.Group key={'updateRSVPFormGroup' +  index} controlId={'plusOne' + index}>
+                            <Form.Control
+                                key={'updateRSVPPlusOne' + index}
+                                type="text"
+                                placeholder="Plus One's Name"
+                                onChange={this.handlePlusOneChange.bind(this, index)}
+                                value={this.state.reservation[index].PlusOne.S} />
+                        </Form.Group> 
+                    </td>
+                    : <td />}
+            </tr>
+        )
+    }
     updateReservation() {
         axios.put(REACT_APP_RSVP_URL_DEV, this.state.reservation)
             .then((res) => {
@@ -151,18 +140,7 @@ class RSVPUpdateModal extends React.Component {
                         <p>
                             Stay safe, we are so excited to party!!
                         </p>
-                        {/* <h5>The following guests are invited to the Rehearsal Dinner on 10/29/2021 at Rehearsal Dinner Place</h5>
-                <Table striped hover borderless>
-                            <thead>
-                                <tr>
-                                    {this.renderHeaders()}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.displayRehearsalReservation()}
-                            </tbody>
-                        </Table> */}
-                <Table striped hover borderless>
+                        <Table striped hover borderless>
                             <thead className="rsvp-headers">
                                 <tr>
                                     {this.renderHeaders()}
@@ -176,10 +154,10 @@ class RSVPUpdateModal extends React.Component {
                     <Modal.Footer>
                         <Button variant="primary" onClick={this.updateReservation}>
                             Save RSVP
-                </Button>
-                <Button variant="secondary" onClick={this.handleClose}>
+                        </Button>
+                        <Button variant="secondary" onClick={this.handleClose}>
                             Cancel
-                </Button>
+                        </Button>
                     </Modal.Footer>
                 </Modal>
             </>
@@ -188,4 +166,4 @@ class RSVPUpdateModal extends React.Component {
     }
 }
 
-export default RSVPUpdateModal;
+export default CeremonyRSVPModal;
