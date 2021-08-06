@@ -9,7 +9,8 @@ class CeremonyRSVPModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            reservation: props.reservation ?? []
+            reservation: props.reservation ?? [],
+            showPlusOne: false
         }
 
         this.handlePlusOneChange = this.handlePlusOneChange.bind(this);
@@ -18,10 +19,23 @@ class CeremonyRSVPModal extends React.Component {
         this.handleClose = this.handleClose.bind(this);
         this.personDetails = this.personDetails.bind(this);
         this.handleRSVPChange = this.handleRSVPChange.bind(this);
+        this.checkShowPlusOne = this.checkShowPlusOne.bind(this);
     }
 
     componentWillReceiveProps(props) {
         this.setState({ reservation: props.reservation, show: props.show });
+        this.checkShowPlusOne(props);
+    }
+
+    checkShowPlusOne(props) {
+        let showPlusOne = false
+        for (let i in props.reservation){
+            if (props.reservation[i].AllowedPlusOne.BOOL){
+                showPlusOne = true;
+                break;
+            }
+        }
+        this.setState({showPlusOne: showPlusOne})
     }
 
     handleClose = () => {
@@ -61,7 +75,10 @@ class CeremonyRSVPModal extends React.Component {
     }
 
     renderHeaders() {
-        let headers = ['Name', 'RSVP', 'Plus One'];
+        let headers = ['Name', 'RSVP'];
+        if (this.state.showPlusOne) {
+            headers.push('Plus One');
+        }
         let tableHeaders=[];
         headers.forEach(header => {
             tableHeaders.push(<th>{header}</th>)
@@ -97,24 +114,6 @@ class CeremonyRSVPModal extends React.Component {
                         <option value={"not-attending" + index}>Not Attending</option>
                     </select>
                 </td>
-                {/* <td>
-                    <FormCheck
-                    className="text-center"
-                    type="radio"
-                    key={'updateRSVPFormCheck' +  index}
-                    name={'vaccinated-attending' + index}
-                    onClick={this.handleRSVPChange.bind(this, index)}
-                    checked={this.state.reservation[index].RSVPd.BOOL} />
-                </td>
-                <td>
-                    <FormCheck
-                    className="text-center"
-                    type="radio"
-                    key={'updateRSVPFormCheck' +  index}
-                    name={'not-attending' + index}
-                    onClick={this.handleRSVPChange.bind(this, index)}
-                    checked={!this.state.reservation[index].RSVPd.BOOL} />
-                </td> */}
                 {person.AllowedPlusOne.BOOL ?
                     <td class="plus-one-name">
                         <Form.Group key={'updateRSVPFormGroup' +  index} controlId={'plusOne' + index}>
@@ -126,7 +125,7 @@ class CeremonyRSVPModal extends React.Component {
                                 value={this.state.reservation[index].PlusOne.S} />
                         </Form.Group> 
                     </td>
-                    : <td />}
+                    : this.state.showPlusOne ? <td /> : null}
             </tr>
         )
     }
@@ -144,7 +143,7 @@ class CeremonyRSVPModal extends React.Component {
 
     render() {
         return (
-            <>
+            <>{this.state.show ?
                 <Modal show={this.state.show} onHide={this.handleClose} backdrop="static" keyboard={false}>
                     <Modal.Header closeButton>
                         <Modal.Title>We Found Your Reservation!</Modal.Title>
@@ -181,7 +180,7 @@ class CeremonyRSVPModal extends React.Component {
                             Cancel
                         </Button>
                     </Modal.Footer>
-                </Modal>
+                </Modal> : null }
             </>
 
         );
