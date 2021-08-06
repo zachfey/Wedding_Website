@@ -2,6 +2,7 @@ import React from "react";
 import RSVPLookupModal from './rsvpLookupModal/rsvpLookupModal';
 import RSVPUpdateModal from './rsvpUpdateModal/rsvpUpdateModal';
 import CeremonyRSVPModal from './ceremonyRSVPModal/ceremonyRSVPModal';
+import ConfirmationRSVPModal from './confirmationRSVPModal/confirmationRSVPModal';
 require('./rsvp.scss')
 
 class RSVP extends React.Component {
@@ -11,11 +12,13 @@ class RSVP extends React.Component {
             reservation: [],
             showRSVPUpdateModal: false,
             showRSVPLookupModal: false,
-            showCeremoneyRSVPModal: false
+            showCeremoneyRSVPModal: false,
+            showConfirmationRSVPModal: false
         }
 
         this.handleReturnedReservation = this.handleReturnedReservation.bind(this);
         this.handleUpdatedReservation = this.handleUpdatedReservation.bind(this);
+        this.handleConfirmationModalClose = this.handleConfirmationModalClose.bind(this);
     }
 
     componentWillReceiveProps(props) {
@@ -26,12 +29,20 @@ class RSVP extends React.Component {
     }
 
     handleReturnedReservation(reservation){
+        //TODO network connection issue
         // this.setState({showRSVPLookupModal: false, reservation: reservation, showRSVPUpdateModal: true});
         this.setState({showRSVPLookupModal: false, reservation: reservation, showCeremoneyRSVPModal: true});
     }
 
-    handleUpdatedReservation(reservation){
+    handleUpdatedReservation(reservation, confirmUpdate){
         this.setState({showCeremoneyRSVPModal: false, reservation: reservation})
+        if (confirmUpdate) {
+            this.setState({showConfirmationRSVPModal: true});
+        }
+    }
+
+    handleConfirmationModalClose(){
+        this.setState({showConfirmationRSVPModal: false})
     }
 
     render() {
@@ -39,7 +50,7 @@ class RSVP extends React.Component {
             <div>
                 <RSVPLookupModal openModal={this.state.showRSVPLookupModal} key="lookupModal" handleReturnedReservation={this.handleReturnedReservation}></RSVPLookupModal>
                 {this.state.reservation ? <CeremonyRSVPModal show={this.state.showCeremoneyRSVPModal} key="udpateModal" reservation={this.state.reservation} handleUpdatedReservation={this.handleUpdatedReservation}></CeremonyRSVPModal> : null}
-                {/* {this.state.reservation ? <RSVPUpdateModal show={this.state.showRSVPUpdateModal} key="udpateModal" reservation={this.state.reservation} handleUpdatedReservation={this.handleUpdatedReservation}></RSVPUpdateModal> : null} */}
+                <ConfirmationRSVPModal show={this.state.showConfirmationRSVPModal} key="confirmationModal" handleConfirmationModalClose={this.handleConfirmationModalClose}></ConfirmationRSVPModal>
             </div>
         );
     }

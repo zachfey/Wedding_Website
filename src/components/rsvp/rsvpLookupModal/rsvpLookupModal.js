@@ -53,8 +53,8 @@ class RSVPLookupModal extends React.Component {
     getReservationInfo(event) {
         event.preventDefault();
         this.setState({ showCodeError: false, showNameError: false, showProgress: true });
-        const firstName = this.state.formFirstName;
-        const lastName = this.state.formLastName;
+        const firstName = this.state.formFirstName.trim();
+        const lastName = this.state.formLastName.trim();
         const reservationCode = this.state.formReservationCode;
         console.log(`A form was submitted! Name: ${firstName} ${lastName}, Reservation Code: ${reservationCode}`);
         const getURL = reservationCode ? `/${reservationCode}` : `/${firstName}+${lastName}`;

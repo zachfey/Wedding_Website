@@ -25,7 +25,7 @@ class CeremonyRSVPModal extends React.Component {
     }
 
     handleClose = () => {
-        this.props.handleUpdatedReservation(this.props.reservation);
+        this.props.handleUpdatedReservation(this.props.reservation, false);
         this.setState({ show: false });
     };
 
@@ -40,21 +40,28 @@ class CeremonyRSVPModal extends React.Component {
     }
 
     handleRSVPChange(index, event) {
-        const target = event.target;
-        let attending = false;
-        if (target.name == 'vaccinated-attending' + index) {
-            attending = true;
+        let rsvpStatus;
+        switch (event.target.value) {
+            case 'attending' + index:
+                rsvpStatus = 'attending';
+                break;
+            case 'not-attending' + index:
+                rsvpStatus = 'not-attending';
+                break;
+            default:
+                rsvpStatus = 'default'
         }
         this.setState(prevState => {
             let reservation = prevState.reservation;
             reservation[index] = Object.assign({}, prevState.reservation[index]);
-            reservation[index].RSVPd.BOOL = attending;
+            reservation[index].RSVPd.S = rsvpStatus;
+            
             return { reservation: reservation };
         })
     }
 
     renderHeaders() {
-        let headers = ['Name', 'Vaccinated & Attending', 'Not Attending', 'Plus One'];
+        let headers = ['Name', 'RSVP', 'Plus One'];
         let tableHeaders=[];
         headers.forEach(header => {
             tableHeaders.push(<th>{header}</th>)
@@ -79,6 +86,18 @@ class CeremonyRSVPModal extends React.Component {
                     {`${firstName} ${lastName}`}
                 </td>
                 <td>
+                    <select 
+                    id="rsvp-select" 
+                    class="rsvp-selecter"
+                    onChange={this.handleRSVPChange.bind(this, index)}
+                    value={this.state.reservation[index].RSVPd.S + index}
+                    >
+                        <option value={"default" + index}>RSVP Here</option>
+                        <option value={"attending" + index}>Vaccinated & Attending</option>
+                        <option value={"not-attending" + index}>Not Attending</option>
+                    </select>
+                </td>
+                {/* <td>
                     <FormCheck
                     className="text-center"
                     type="radio"
@@ -95,7 +114,7 @@ class CeremonyRSVPModal extends React.Component {
                     name={'not-attending' + index}
                     onClick={this.handleRSVPChange.bind(this, index)}
                     checked={!this.state.reservation[index].RSVPd.BOOL} />
-                </td>
+                </td> */}
                 {person.AllowedPlusOne.BOOL ?
                     <td class="plus-one-name">
                         <Form.Group key={'updateRSVPFormGroup' +  index} controlId={'plusOne' + index}>
@@ -113,10 +132,13 @@ class CeremonyRSVPModal extends React.Component {
     }
     updateReservation() {
         axios.put(REACT_APP_RSVP_URL_DEV, this.state.reservation)
-            .then((res) => {
-                console.log(res)
-                //TODO error response
-                this.props.handleUpdatedReservation(JSON.parse(res.config?.data))
+            .then((res, err) => {
+                if (err) {
+                    console.log('error handling');
+                } else {
+                    console.log(res)
+                    this.props.handleUpdatedReservation(JSON.parse(res.config?.data), true)
+                }
             });
     }
 
@@ -130,7 +152,7 @@ class CeremonyRSVPModal extends React.Component {
                     <Modal.Body>
                         <h4>IMPORTANT (please read)</h4>
                         <p> 
-                            Thank you for making our big, beautiful party safe, carefree, and revelatory for everyone by being fully vaccinated 
+                            Thank you for making our big, beautiful party safe and carefree for everyone by being fully vaccinated 
                             and keeping up with any boosters that may or may not be recommended over these next few months.
                         </p>
                         <p>
