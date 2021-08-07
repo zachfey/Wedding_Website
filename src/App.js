@@ -39,10 +39,13 @@ function App() {
                 <Nav.Link className="wedding-nav link" href="/location">Location</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className="wedding-nav link" href="/registry">Registry</Nav.Link>
+                <Nav.Link className="wedding-nav link" href="/accommodations">Accommodations</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className="wedding-nav link" href="/accommodations">Accommodations</Nav.Link>
+                <Nav.Link className="wedding-nav link" href="/attire">Dress Code</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link className="wedding-nav link" href="/registry">Registry</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link className="wedding-nav link" href="/gallery">Gallery</Nav.Link>

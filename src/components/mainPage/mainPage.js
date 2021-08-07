@@ -1,13 +1,13 @@
 import React from 'react';
 import { Container, Jumbotron, Image } from 'react-bootstrap';
-import pageImage from "../../images/engagement_photos/walkingDog.jpg";
+import pageImage from "../../images/engagement_photos/EngagementPhotos-71-cropped.jpg";
 require('./mainPage.scss')
 
 export default function MainPage(props) {
     return (
         <Container fluid>
         <Image src={pageImage} rounded fluid id="mainPage-image"/>
-            <Jumbotron class="story-jumbotron">
+            <Jumbotron className="story-jumbotron">
                 <p>
                     Katie and Zach met in January, 2014 while they were both in college. Katie was finishing up her last semester of her Bachelor of Science in 
                     Respiratory Therapy and Zach had another year left in his Bachelor of Science in Chemical Engineering. Zach saw something he liked in the bar 

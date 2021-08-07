@@ -159,6 +159,9 @@ class CeremonyRSVPModal extends React.Component {
                             Having everyone safely vaccinated is very important to us. 
                         </p>
                         <p>
+                            Also - we love your kids, but due to venue capacity, we'll have to ask that they sit this one out.
+                        </p>
+                        <p>
                             Stay safe, we are so excited to party!!
                         </p>
                         <Table striped hover borderless>
