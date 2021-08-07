@@ -1,6 +1,5 @@
 import React from "react";
 import RSVPLookupModal from './rsvpLookupModal/rsvpLookupModal';
-import RSVPUpdateModal from './rsvpUpdateModal/rsvpUpdateModal';
 import CeremonyRSVPModal from './ceremonyRSVPModal/ceremonyRSVPModal';
 import ConfirmationRSVPModal from './confirmationRSVPModal/confirmationRSVPModal';
 require('./rsvp.scss')
