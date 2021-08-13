@@ -18,14 +18,30 @@ $accommodationsCardMargin: 10px;
 }
 .accommodations-container {
     height: calc(100vh - #{$navbarHeight});
-    background-color: $secondary;
+    // background-color: $secondary;
 }
 
 .accommodations-card {
-    height: $accommodationsCardHeight;
+    // height: $accommodationsCardHeight;
     border: none;
     margin-left: auto;
     margin-right: auto;
     margin-top: $accommodationsCardMargin;
     margin-bottom: $accommodationsCardMargin; 
+}
+
+.map-box{
+    margin-top: 20px;;
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+
+.map-box iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
 }

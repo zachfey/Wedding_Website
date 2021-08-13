@@ -18,14 +18,17 @@ $locationCardMargin: 10px;
 }
 .location-container {
     height: calc(100vh - #{$navbarHeight});
-    background-color: $secondary;
+    // background-color: $secondary;
 }
 
 .location-card {
-    height: $locationCardHeight;
     border: none;
     margin-left: auto;
     margin-right: auto;
     margin-top: $locationCardMargin;
     margin-bottom: $locationCardMargin; 
+}
+
+ul{
+    text-align: left;
 }
