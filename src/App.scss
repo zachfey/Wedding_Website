@@ -82,10 +82,14 @@
     font-size: 30px;
 }
 
+.is-active {
+  color: black;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   #names {
-    font-size: 7vw;
+    font-size: 7vw; 
   }
 }
 
@@ -94,11 +98,25 @@
   #names {
     font-size: 66px;
   }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   #names {
     font-size: 80px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  
+  
+  #app-navbar {
+    margin-top: -70px;
+    background-color: transparent !important;
+  }
+
+  .navbar-light .navbar-toggler {
+    background-color: $light;
   }
 }

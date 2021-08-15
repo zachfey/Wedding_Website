@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.scss';
-import { Route, BrowserRouter as Router, Redirect } from 'react-router-dom'
+import { Route, BrowserRouter as Router, NavLink } from 'react-router-dom'
 import { Button, Image, Navbar } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav'
 import MainPage from './components/mainPage/mainPage'
@@ -26,43 +26,43 @@ function App() {
           <Image src={banner} fluid id="banner-image"/>
           <div id='names'>Katie & Zach</div>
         </div>
-        <Navbar id="app-navbar" expand="md" bg="light">
+        <Router>
+        <Navbar id="app-navbar" expand="md" bg="light" sticky="top">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="justify-content-center" justify>
+            <Nav className="justify-content-center" fill>
               <Nav.Item>
                 <Nav.Link className="wedding-nav link" onClick={setShowRSVPModal}>RSVP</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className="wedding-nav link" href="/home">Home</Nav.Link>
+                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/home">Home</NavLink>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className="wedding-nav link" href="/location">Location</Nav.Link>
+                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/location">Location</NavLink>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className="wedding-nav link" href="/accommodations">Accommodations</Nav.Link>
+                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/accommodations">Accommodations</NavLink>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className="wedding-nav link" href="/attire">Dress Code</Nav.Link>
+                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/attire">Dress Code</NavLink>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className="wedding-nav link" href="/registry">Registry</Nav.Link>
+                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/registry">Registry</NavLink>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className="wedding-nav link" href="/gallery">Gallery</Nav.Link>
+                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/gallery">Gallery</NavLink>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
         <RSVP showRSVPLookupModal={showRSVPModal} resetShowRSVPModal={resetShowRSVPModal} />
-        <Router>
           <div>
-            <Route
+            {/* <Route
                     exact
                     strict
                     path="/"
                     render={() => <Redirect to="/home" />}
-                  />
+                  /> */}
             
             <Route path="/home" component={MainPage} />
             <Route path="/location" component={Location} />
