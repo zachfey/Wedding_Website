@@ -8,6 +8,7 @@
   text-align: center;
   background-color: $light;
   padding-bottom: 75px;
+  height: 100%;
 }
 
 .content {
@@ -44,9 +45,9 @@
   font-weight: bold;
 }
 
-.page {
-  height: 100vh;
-}
+// .page {
+//   // height: 100vh;
+// }
 
 /* Container holding the image and the text */
 #image-container {

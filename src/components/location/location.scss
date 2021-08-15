@@ -17,8 +17,7 @@ $locationCardMargin: 10px;
     margin-top: 10px;
 }
 .location-container {
-    height: calc(100vh - #{$navbarHeight});
-    // background-color: $secondary;
+    height: 100%;
 }
 
 .location-card {
@@ -31,4 +30,30 @@ $locationCardMargin: 10px;
 
 ul{
     text-align: left;
+}
+
+
+
+.map-box{
+    margin-top: 20px;;
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+
+.map-box iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+.oakleaf-image {
+    max-width: 100%;
+}
+
+#directions {
+    padding:10px;
 }

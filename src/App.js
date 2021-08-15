@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav'
 import MainPage from './components/mainPage/mainPage'
 import Location from './components/location/location'
 import Accommodations from './components/accommodations/accommodations'
+import Registry from './components/registry/registry'
 import RSVP from './components/rsvp/rsvp'
 import Gallery from './components/gallery/gallery'
 import banner from "./images/Banner_Photos/invitationDesign.png"
@@ -67,6 +68,7 @@ function App() {
             <Route path="/location" component={Location} />
             <Route path="/accommodations" component={Accommodations} />
             <Route path="/gallery" component={Gallery} />
+            <Route path="/registry" component={Registry} />
           </div>
         </Router>
       </div>
