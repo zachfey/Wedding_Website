@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './App.scss';
-import { Route, BrowserRouter as Router, NavLink } from 'react-router-dom'
-import { Button, Image, Navbar } from 'react-bootstrap';
-import Nav from 'react-bootstrap/Nav'
+import { Route, BrowserRouter as Router,  Redirect } from 'react-router-dom';
+import { Button, Image, Navbar, Nav } from 'react-bootstrap';
 import MainPage from './components/mainPage/mainPage'
 import Location from './components/location/location'
 import Accommodations from './components/accommodations/accommodations'
@@ -27,42 +26,42 @@ function App() {
           <div id='names'>Katie & Zach</div>
         </div>
         <Router>
-        <Navbar id="app-navbar" expand="md" bg="light" sticky="top">
+        <Navbar collapseOnSelect id="app-navbar" expand="md" bg="light" sticky="top">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="justify-content-center" fill>
-              <Nav.Item>
-                <Nav.Link className="wedding-nav link" onClick={setShowRSVPModal}>RSVP</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/home">Home</NavLink>
-              </Nav.Item>
-              <Nav.Item>
-                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/location">Location</NavLink>
-              </Nav.Item>
-              <Nav.Item>
-                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/accommodations">Accommodations</NavLink>
-              </Nav.Item>
-              <Nav.Item>
-                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/attire">Dress Code</NavLink>
-              </Nav.Item>
-              <Nav.Item>
-                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/registry">Registry</NavLink>
-              </Nav.Item>
-              <Nav.Item>
-                <NavLink className="wedding-nav link nav-link" activeStyle={{color: "black"}} to="/gallery">Gallery</NavLink>
-              </Nav.Item>
+            <Nav className="justify-content-center wedding-nav link nav-link" fill>
+              
+                <Nav.Link eventKey="1" onClick={setShowRSVPModal}>RSVP</Nav.Link>
+              
+              
+                <Nav.Link eventKey="2" to="/home" href="/home">Home</Nav.Link>
+              
+              
+                <Nav.Link eventKey="3" to="/location" href="/location">Location</Nav.Link>
+              
+              
+                <Nav.Link eventKey="4" to="/accommodations" href="/accommodations">Accommodations</Nav.Link>
+              
+              
+                <Nav.Link eventKey="5" to="/attire" href="/attire">Dress Code</Nav.Link>
+              
+              
+                <Nav.Link eventKey="6" to="/registry" href="/registry">Registry</Nav.Link>
+              
+              
+                <Nav.Link eventKey="7" to="/gallery" href="/gallery">Gallery </Nav.Link>
+              
             </Nav>
           </Navbar.Collapse>
         </Navbar>
         <RSVP showRSVPLookupModal={showRSVPModal} resetShowRSVPModal={resetShowRSVPModal} />
           <div>
-            {/* <Route
+            <Route
                     exact
                     strict
                     path="/"
-                    render={() => <Redirect to="/home" />}
-                  /> */}
+                    render={() => <Redirect to="/home" href="/home" />}
+                  />
             
             <Route path="/home" component={MainPage} />
             <Route path="/location" component={Location} />
@@ -79,6 +78,4 @@ function App() {
 
   );
 }
-//TODO Trim whitespace from rsvps names
-//TODO Not display text when nobody is invited to rehearsal dinner
 export default App;

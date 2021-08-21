@@ -1,5 +1,11 @@
 @import './custom.scss';
 
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: $light !important;
+}
+
 .page {
   display:block;
 }
@@ -84,6 +90,12 @@
 
 .is-active {
   color: black;
+}
+
+.page-header {
+    font-family: 'Poiret One', cursive;
+    font-weight: bolder;
+    margin-top: 10px;
 }
 
 /* Extra small devices (phones, 600px and down) */

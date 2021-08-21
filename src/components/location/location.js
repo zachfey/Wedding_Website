@@ -9,6 +9,7 @@ export default function Location() {
                 <Image className='oakleaf-image' src={pageImage}></Image>
             </div>
             <div>
+                <h2 className="page-header">Location</h2>
                 <p>The ceremony and reception will be held at</p>
                 <h4>Oakleaf Cottage</h4>
                 <p className="address">6979 Highway 136<br/>Trenton, GA 30752</p>

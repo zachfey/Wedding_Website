@@ -5,7 +5,7 @@ export default function Location() {
     return (
         <Container fluid className="accommodations-container">
             <div id="accommodations">
-                {/* <h3>We have blocks of rooms with discounted rates at both of the following hotels.</h3> */}
+             <h2 className="page-header">Accommodations</h2>
             </div>
             <Row xs={1} md={2}>
                 <Col>

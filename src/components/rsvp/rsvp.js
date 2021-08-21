@@ -29,7 +29,6 @@ class RSVP extends React.Component {
 
     handleReturnedReservation(reservation){
         //TODO network connection issue
-        // this.setState({showRSVPLookupModal: false, reservation: reservation, showRSVPUpdateModal: true});
         this.setState({showRSVPLookupModal: false, reservation: reservation, showCeremoneyRSVPModal: true});
     }
 
