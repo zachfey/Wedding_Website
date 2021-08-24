@@ -2,6 +2,7 @@
 import React from "react";
 import { Button, Modal, Table, Form } from 'react-bootstrap'
 const axios = require("axios").default;
+require('./ceremonyRSVPModal.scss')
 
 
 const REACT_APP_RSVP_URL_DEV = "https://0mggls4coa.execute-api.us-east-1.amazonaws.com/dev/rsvp"
@@ -48,6 +49,9 @@ class CeremonyRSVPModal extends React.Component {
         const value = target.value;
         this.setState(prevState => {
             let reservation = Object.assign({}, prevState.reservation);
+            if (!reservation[index].PlusOne) {
+                reservation[index].PlusOne = {"S":""};
+            }
             reservation[index].PlusOne.S = value;
             return reservation;
         })
@@ -102,27 +106,28 @@ class CeremonyRSVPModal extends React.Component {
                 <td>
                     {`${firstName} ${lastName}`}
                 </td>
-                <td>
-                    <select 
-                    id="rsvp-select" 
-                    class="rsvp-selecter"
-                    onChange={this.handleRSVPChange.bind(this, index)}
-                    value={this.state.reservation[index].RSVPd.S + index}
-                    >
-                        <option value={"default" + index}>RSVP Here</option>
-                        <option value={"attending" + index}>Vaccinated & Attending</option>
-                        <option value={"not-attending" + index}>Not Attending</option>
-                    </select>
+                <td className={person.AllowedPlusOne.BOOL ? 'rsvp-input' : ''}>
+                    {/* <div className="form-row">
+                        <div className="form-group"> */}
+                            <select className="form-control rsvp-selecter" id="rsvp-select"  name="rsvp-select"
+                                onChange={this.handleRSVPChange.bind(this, index)}
+                                value={this.state.reservation[index].RSVPd.S + index}>
+                                <option value={"default" + index}>RSVP Here</option>
+                                <option value={"attending" + index}>Vaccinated & Attending</option>
+                                <option value={"not-attending" + index}>Not Attending</option>
+                            </select>
+                        {/* </div>
+                    </div> */}
                 </td>
                 {person.AllowedPlusOne.BOOL ?
-                    <td class="plus-one-name">
+                    <td class="plus-one-name rsvp-input">
                         <Form.Group key={'updateRSVPFormGroup' +  index} controlId={'plusOne' + index}>
                             <Form.Control
                                 key={'updateRSVPPlusOne' + index}
                                 type="text"
                                 placeholder="Plus One's Name"
                                 onChange={this.handlePlusOneChange.bind(this, index)}
-                                value={this.state.reservation[index].PlusOne.S} />
+                                value={this.state.reservation[index].PlusOne && this.state.reservation[index].PlusOne.S ? this.state.reservation[index].PlusOne.S : null} />
                         </Form.Group> 
                     </td>
                     : this.state.showPlusOne ? <td /> : null}
