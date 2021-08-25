@@ -5,6 +5,7 @@ const axios = require("axios").default;
 
 
 const REACT_APP_RSVP_URL_DEV = "https://0mggls4coa.execute-api.us-east-1.amazonaws.com/dev/rsvp"
+const REACT_APP_EMAIL = "https://0mggls4coa.execute-api.us-east-1.amazonaws.com/dev/email"
 class RSVPLookupModal extends React.Component {
     constructor(props) {
         super()
@@ -19,7 +20,8 @@ class RSVPLookupModal extends React.Component {
             show: props.openModal,
             valid: false,
             showCodeError: false,
-            showNameError: false
+            showNameError: false,
+            showEmailError: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -78,9 +80,29 @@ class RSVPLookupModal extends React.Component {
             })
     }
 
-    email() {
-        //TODO implement email
-        console.log("TODO implement email")
+    email(event) {
+        event.preventDefault();
+        this.setState({ showEmailError: false, showProgress: true });
+        const firstName = this.state.formFirstName.trim();
+        const lastName = this.state.formLastName.trim();
+        const messageBody = this.state.formEmailBody.trim();
+        console.log(`A form was submitted! Name: ${firstName} ${lastName}, Message Body: ${messageBody}`);
+        let message = `${firstName} ${lastName}: ${messageBody}`
+        axios.post(REACT_APP_EMAIL, {message}).then(
+            res => {
+                this.setState({showProgress: false})
+                if (res.data.statusCode === 200) {
+                    this.props.handleSuccessfulEmail();
+                } else {
+                    console.log('email error');
+                    this.setState({showEmailError: true});
+                }
+            },
+            err => {
+                this.setState({showProgress: false})
+                this.setState({showEmailError: true});
+                console.log('error', err);
+            })
         console.log(this.state.formFirstName, " ", this.state.formLastName, " sending email with body: ", this.state.formEmailBody)
     }
 
@@ -120,11 +142,10 @@ class RSVPLookupModal extends React.Component {
                                 Reservation not found, try searching by your nickname or full name.
                             </p>
                             <p>
-                                If you're still having issues, please fill out your RSVP intentions and any questions in the box below and 
-                                click "Email Katie and Zach" to send them an email with your name and information.
+                                If you're still having issues, feel free to let Zach and Katie what's going on.
                             </p>
                             <textarea
-                            placeholder="Let Zach and Katie know what's going on here"
+                            placeholder="Let Zach and Katie know what's happening"
                             id="email-body" 
                             onChange={this.handleChange} 
                             name="formEmailBody" 
@@ -137,6 +158,11 @@ class RSVPLookupModal extends React.Component {
                         <Button variant="primary" className="rsvp-lookup" disabled={!this.state.valid} onClick={this.getReservationInfo}>
                             Find Reservation
                         </Button>
+                        <div hidden={!this.state.showEmailError}>
+                            <p className="error">
+                                Sorry, your email was not sent!
+                            </p>
+                        </div>
                     </Modal.Footer>
                             <ProgressBar hidden={!this.state.showProgress} animated now={100} />
                 </Modal>

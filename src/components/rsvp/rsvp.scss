@@ -20,7 +20,7 @@
     /* border-top:1px solid #393F2D */
 }
 
-button.rsvp-lookup {
+button.rsvp-lookup, button.send-email {
     /* background-color: #ab9b22;
     border-color: #ab9b22; */
     font-family: 'Poiret One', cursive;
@@ -36,6 +36,9 @@ td .form-group {
 
 .error{
     color: $error;
+}
+div .error{
+    margin-right:auto;
 }
 
 #email-body {
