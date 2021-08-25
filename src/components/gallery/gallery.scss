@@ -3,5 +3,5 @@
 .contain{
     object-fit: contain;
     height: calc(100vh - #{$navbarHeight});
-    width:100vw;
+    width:100%;
 }
