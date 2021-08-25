@@ -16,7 +16,7 @@ export default function Location() {
                 <h5>Beginning at 5:00pm</h5>
             </div>
             <div id='directions'>
-                <h3>Directions and Parking</h3>
+                <h2 className="page-header">Directions and Parking</h2>
                 <p>
                     The venue is 20 minutes from Chattanooga and about a 2 hour drive from Atlanta. <b>We will provide a shuttle to and from the venue.</b> The pickup/dropoff point is the Moxy Downtown Chattanooga. Shuttle capacity is somewhat limited, so if you do not plan on drinking heavily, please consider driving. <b>If you choose to drive, please review the important parking instructions below.</b>
                     </p><p>

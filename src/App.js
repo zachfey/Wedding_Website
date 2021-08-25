@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import './App.scss';
 import { Route, BrowserRouter as Router,  Redirect } from 'react-router-dom';
 import { Button, Image, Navbar, Nav } from 'react-bootstrap';
-import MainPage from './components/mainPage/mainPage'
-import Location from './components/location/location'
-import Accommodations from './components/accommodations/accommodations'
-import Registry from './components/registry/registry'
-import RSVP from './components/rsvp/rsvp'
-import Gallery from './components/gallery/gallery'
-import banner from "./images/Banner_Photos/invitationDesign.png"
+import MainPage from './components/mainPage/mainPage';
+import Location from './components/location/location';
+import Accommodations from './components/accommodations/accommodations';
+import Registry from './components/registry/registry';
+import DressCode from './components/dressCode/dressCode';
+import RSVP from './components/rsvp/rsvp';
+import Gallery from './components/gallery/gallery';
+import banner from "./images/Banner_Photos/invitationDesign.png";
 
 function App() {
   const [showRSVPModal, setShow] = useState(false);
@@ -68,6 +69,7 @@ function App() {
             <Route path="/accommodations" component={Accommodations} />
             <Route path="/gallery" component={Gallery} />
             <Route path="/registry" component={Registry} />
+            <Route path="/attire" component={DressCode} />
           </div>
         </Router>
       </div>
