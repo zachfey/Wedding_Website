@@ -19,7 +19,7 @@ export default function MainPage(props) {
                         to get Katie moved in for her first travel assignment. Apart from the trip back, they met up to go on cruises, ski trips, visit desert islands, and even went on a trip to Costa Rica.
                     </p>
                     <p>
-                        In 2019, they were finally able to move in together in Roswell, GA and have been inseperable since. Zach finally worked up the courage to propose in March 2020
+                        In 2019, they were finally able to move in together in Roswell, GA and have been inseparable since. Zach finally worked up the courage to propose in March 2020
                         after a beautiful but difficult hike to the top of Mt LeConte in the Great Smoky Mountains National Park. Katie and Zach are now travelling the US while Katie 
                         takes travel assignments in different cities. So far they have lived in Salt Lake City, Utah and Portland, Maine.
                     </p>
