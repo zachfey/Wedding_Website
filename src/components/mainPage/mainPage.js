@@ -14,7 +14,7 @@ export default function MainPage(props) {
                         Respiratory Therapy and Zach had another year left in his Bachelor of Science in Chemical Engineering. They met at Ri Ra Irish Pub in midtown, Atlanta.
                     </p>
                     <p>
-                        When Zach moved to Lousiana to start his career, they continued dating in a long-distance relationship. Although they didn't see each other all the 
+                        When Zach moved to Louisiana to start his career, they continued dating in a long-distance relationship. Although they didn't see each other all the 
                         time, they always had a great time together when they did. During this time, they made their first (of several) cross-country road trips out to San Francisco
                         to get Katie moved in for her first travel assignment. Apart from the trip back, they met up to go on cruises, ski trips, visit desert islands, and even went on a trip to Costa Rica.
                     </p>
