@@ -21,7 +21,7 @@ export default function Location() {
                             <ul>
                                 <li>Complementary beverage provided upon arrival.</li>
                                 <li>Valet or self parking is $15/night.</li>
-                                <li>Shuttle Pickup and Dropoff is here</li>
+                                <li>Shuttle pickup and dropoff is here</li>
                             </ul>
                         <Button href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1618333626360&key=GRP&app=resvlink" target="_blank">Reserve Room At MOXY</Button>
                         <div className="map-box">

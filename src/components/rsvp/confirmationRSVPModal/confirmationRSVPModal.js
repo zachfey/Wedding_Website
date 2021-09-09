@@ -31,7 +31,7 @@ class ConfirmationRSVPModal extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <p> 
-                            Your RSVP has been recieved. Thank you!!
+                            Your RSVP has been received. Thank you!!
                         </p>
                     </Modal.Body>
                     <Modal.Footer>

@@ -151,17 +151,6 @@ class RSVPUpdateModal extends React.Component {
                         <p>
                             Stay safe, we are so excited to party!!
                         </p>
-                        {/* <h5>The following guests are invited to the Rehearsal Dinner on 10/29/2021 at Rehearsal Dinner Place</h5>
-                <Table striped hover borderless>
-                            <thead>
-                                <tr>
-                                    {this.renderHeaders()}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.displayRehearsalReservation()}
-                            </tbody>
-                        </Table> */}
                 <Table striped hover borderless>
                             <thead className="rsvp-headers">
                                 <tr>
